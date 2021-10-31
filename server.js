@@ -9,8 +9,8 @@ const port = process.env.PORT || 3000
 
 app.set("views", __dirname + "/views")
 app.set('view engine', 'ejs');
-app.set("layout", "/layouts/layout")
 app.use(expressLayouts);
+app.set("layout", "layouts/layout")
 app.use(express.static("public"))
 
 // Routes

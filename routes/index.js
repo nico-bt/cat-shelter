@@ -4,7 +4,7 @@ const app = express()
 const router = express.Router()
 
 router.get("/", (req, res)=>{
-    res.send("Hello from the /routes/index.js")
+    res.render("index")
 })
 
 module.exports = router
