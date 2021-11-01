@@ -1,1 +1,12 @@
-<h1>This is cats/index.ejs</h1>
+<h1>Cats in the shelter</h1>
+
+<% cats.forEach((cat)=>{ %>
+    <div>
+        <ul>
+            <li><%= cat.name %> </li>
+            <li><%= cat.age %> </li>
+            <li><%- cat.vaccinated? "Vacunas completas" : "Falta completar esquema de vacunación" %> </li>
+            <li><%- cat.adopted? "Adoptado" : "En adopción" %> </li>
+        </ul>
+    </div>
+<% }) %> 

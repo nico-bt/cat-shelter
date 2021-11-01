@@ -5,9 +5,16 @@ const router = express.Router()
 // Cat Model
 const Cat = require("../models/cat")
 
-// All cats Route (all routes prepended with "cats/")
-router.get("/", (req, res)=>{
-    res.render("cats/index")
+// (all routes are prepended with "cats/")
+// All cats Route 
+router.get("/", async (req, res)=>{
+    try {
+        const cats = await Cat.find()
+        res.render("cats/index", {cats})
+    } catch (error) {
+        res.render("cats/index", {message: error})
+    }
+
 })
 
 // New Cat Route (show form)
