@@ -30,6 +30,7 @@ db.once("open", () => console.log("Connected to MongoDB"))
 
 // Routes
 const indexRouter = require("./routes/index")
+const catsRouter = require("./routes/cats")
 
 
 // =============================================================
@@ -37,6 +38,7 @@ const indexRouter = require("./routes/index")
 // =============================================================
 
 app.use("/", indexRouter)
+app.use("/cats", catsRouter)
 
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`)
