@@ -13,6 +13,10 @@ app.use(expressLayouts);
 app.set("layout", "layouts/layout")
 app.use(express.static("public"))
 
+// Enable access to body.xxxx
+app.use(express.json()); 
+app.use(express.urlencoded())
+
 // Database
 let config;
 try{

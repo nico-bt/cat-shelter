@@ -1,1 +1,18 @@
-<h1>This is cats/new.ejs</h1>
+<h2>Add new Cat to the list</h2>
+
+<form action="/cats" method="POST">
+    <input type="string" name="name" placeholder="name">
+    <input type="string" name="age" placeholder="age">
+    
+    <label for="vaccinated">Vaccinated: </label> 
+    <input type="checkbox" name="vaccinated" id="vaccinated">
+    
+    <label for="neutered">Neutered: </label>
+    <input type="checkbox" name="neutered" id="neutered">
+    
+    <label for="adopted">Adopted: </label>
+    <input type="checkbox" name="adopted" id="adopted">
+
+    <a href="/cats">Cancel</a>
+    <button type="submit">Add</button>
+</form>
