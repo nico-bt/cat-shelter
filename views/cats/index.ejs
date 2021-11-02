@@ -1,5 +1,14 @@
 <h1>Cats in the shelter</h1>
 
+<form action="/cats" method="GET">
+    <label for="searchName">Search by name</label>
+    <input id="searchName" type="text" name="searchName" placeholder="name" value="<%= locals.nameSearch %>">
+    
+    <label for="searchAge">Search by age</label>
+    <input id="searchAge" type="text" name="searchAge" placeholder="dias - meses - año/s" value="<%= locals.ageSearch %>">
+    <button type="submit">Search</button>
+</form>
+
 <% cats.forEach((cat)=>{ %>
     <div>
         <ul>
