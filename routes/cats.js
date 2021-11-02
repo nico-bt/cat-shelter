@@ -8,13 +8,25 @@ const Cat = require("../models/cat")
 // (all routes are prepended with "cats/")
 // All cats Route 
 router.get("/", async (req, res)=>{
+    let searchOptions = {}
+    // Option query from search bar
+    if(req.query.searchName !== null && req.query.searchName !== ""){
+        searchOptions.name = new RegExp(req.query.searchName, "i")
+    }
+    if(req.query.searchAge !== null && req.query.searchAge !== ""){
+        searchOptions.age = new RegExp(req.query.searchAge, "i")
+    }
+    // Search in DB with options. If no options-->return all cats
     try {
-        const cats = await Cat.find()
-        res.render("cats/index", {cats})
+        const cats = await Cat.find(searchOptions)
+        res.render("cats/index", {
+            cats,
+            nameSearch: req.query.searchName,
+            ageSearch: req.query.searchAge
+         })
     } catch (error) {
         res.render("cats/index", {message: error})
     }
-
 })
 
 // New Cat Route (show form)
@@ -34,7 +46,8 @@ router.post("/", async (req, res)=>{
 
     try {
         const newCatAdded = await newCat.save()
-        res.render("cats/index", {message: "Added to the list!"})
+        const cats = await Cat.find()
+        res.render("cats/index", {message: "Added to the list!", cats})
         // res.redirect(`/cats/${newCatAdded.id}`)
     } catch (error) {
         res.render("cats/new", {message: error})
