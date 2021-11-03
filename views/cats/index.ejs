@@ -12,10 +12,12 @@
 <% cats.forEach((cat)=>{ %>
     <div>
         <ul>
+            <li><img width="200px" src="<%= cat.image %>"> </li>
             <li><%= cat.name %> </li>
             <li><%= cat.age %> </li>
             <li><%- cat.vaccinated? "Vacunas completas" : "Falta completar esquema de vacunación" %> </li>
             <li><%- cat.adopted? "Adoptado" : "En adopción" %> </li>
+            <li>Admission: <%= cat.admissionDate.toISOString().split("T")[0] %> </li>
         </ul>
     </div>
 <% }) %> 
