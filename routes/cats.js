@@ -37,8 +37,10 @@ router.get("/new", (req, res)=>{
 // Create New Cat Route (add to db)
 router.post("/", async (req, res)=>{
     const newCat = new Cat({
+        image: req.body.image,
         name: req.body.name,
         age: req.body.age,
+        admissionDate: req.body.admissionDate,
         vaccinated: !!(req.body.vaccinated),
         neutered: !!(req.body.neutered),
         adopted: !!(req.body.adopted)
