@@ -1,8 +1,9 @@
 <h2>Add new Cat to the list</h2>
 
-<form action="/cats" method="POST">
+<form action="/cats" method="POST" enctype="multipart/form-data">
     <div>
-        <input type="string" name="image" placeholder="Image">
+        <!-- <input type="string" name="image" placeholder="Image"> -->
+        <input type="file" name="image">
     </div>
     <div>
         <input type="string" name="name" placeholder="Name">

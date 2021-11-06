@@ -1,7 +1,7 @@
 // =============================================================
 // Importing Express and general config
 // =============================================================
-
+// Express
 const express = require('express')
 const app = express()
 const expressLayouts = require('express-ejs-layouts');
@@ -25,7 +25,6 @@ try{
 	console.log("Could not import 'config.js'. Maybe NOT working locally?");
 	console.log(e);
 }
-
 const mongoose = require('mongoose');
 mongoose.connect(process.env.DATABASE_URL || config.connection)
 const db = mongoose.connection

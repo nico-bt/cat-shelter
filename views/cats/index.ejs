@@ -12,7 +12,7 @@
 <% cats.forEach((cat)=>{ %>
     <div>
         <ul>
-            <li><img width="200px" src="<%= cat.image %>"> </li>
+            <li><img width="200px" src="\uploads\<%=cat.image%>"> </li>
             <li><%= cat.name %> </li>
             <li><%= cat.age %> </li>
             <li><%- cat.vaccinated? "Vacunas completas" : "Falta completar esquema de vacunación" %> </li>
