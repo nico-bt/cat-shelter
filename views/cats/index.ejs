@@ -6,6 +6,7 @@
     
     <label for="searchAge">Search by age</label>
     <input id="searchAge" type="text" name="searchAge" placeholder="dias - meses - año/s" value="<%= locals.ageSearch %>">
+    
     <button type="submit">Search</button>
 </form>
 
@@ -18,6 +19,7 @@
             <li><%- cat.vaccinated? "Vacunas completas" : "Falta completar esquema de vacunación" %> </li>
             <li><%- cat.adopted? "Adoptado" : "En adopción" %> </li>
             <li>Admission: <%= cat.admissionDate.toISOString().split("T")[0] %> </li>
+            <li><a href="/cats/<%=cat.id %>">LINK AL CAT ID</a></li>
         </ul>
     </div>
 <% }) %> 
