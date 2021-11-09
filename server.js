@@ -31,15 +31,16 @@ const db = mongoose.connection
 db.on("error", error => console.log(error))
 db.once("open", () => console.log("Connected to MongoDB"))
 
-// Routes
-const indexRouter = require("./routes/index")
-const catsRouter = require("./routes/cats")
-
 
 // =============================================================
 // App
 // =============================================================
 
+// Routes
+const indexRouter = require("./routes/index")
+const catsRouter = require("./routes/cats")
+
+// App
 app.use("/", indexRouter)
 app.use("/cats", catsRouter)
 
