@@ -10,7 +10,5 @@ const CatSchema = new mongoose.Schema({
   admissionDate: {type: Date, required: true, default: Date.now}
 });
 
-const saveImageFilePath = "uploads/catImages"
 
 module.exports = mongoose.model("Cat", CatSchema)
-module.exports.saveImageFilePath = saveImageFilePath
