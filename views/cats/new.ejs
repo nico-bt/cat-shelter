@@ -13,7 +13,7 @@
     </div>
     <div>
         <label for="admissionDate">Admission date</label>
-        <input type="date" name="admissionDate" id="admissionDate" value="">
+        <input type="date" name="admissionDate" id="admissionDate" value="<%=new Date(Date.now()).toISOString().split("T")[0]%>">
     </div>
     <div>
         <label for="vaccinated">Vaccinated: </label> 
