@@ -63,12 +63,11 @@ router.post("/", (req, res)=>{
         // Admission date and picture are required
         else if(req.body.admissionDate=="" || req.file==undefined){
             res.render("cats/new", {message:"Picture and Admission date are required"})
-            // Acá habría que borarr foto porque la carga igual
         }
         else{
             // Create item
             const newCat = new Cat({
-            image: (req.file? req.file.filename : "") , //req.file comes from 'multer' with the 'upload' midleware. "image" is name of input type=file
+            image: (req.file? req.file.filename : "") , //req.file comes from 'multer' with the 'upload' midleware. "image" is the name of the input type=file in the form
             name: req.body.name,
             age: req.body.age,
             admissionDate: req.body.admissionDate,
@@ -83,6 +82,16 @@ router.post("/", (req, res)=>{
             .catch(error => res.render("cats/new", {message: error}) )
         }
     })
+})
+
+// Single cat Route - /cat/id
+router.get("/:id", async (req,res)=>{
+	try {
+		const cat = await Cat.findById(req.params.id).exec();
+		res.render("cats/cat",{cat})
+	} catch (error) {
+		res.send(error)
+	}
 })
 
 
