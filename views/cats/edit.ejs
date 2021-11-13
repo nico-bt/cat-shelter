@@ -1,0 +1,33 @@
+<h2>Edit</h2>
+
+<form action="/cats/<%=cat.id %>?_method=PUT" method="POST">
+    <div>
+        <input type="file" name="image">
+    </div>
+    <div>
+        <input type="string" name="name" value="<%= cat.name %>">
+    </div>
+    <div>
+        <input type="string" name="age" value="<%= cat.age %>">
+    </div>
+    <div>
+        <label for="admissionDate">Admission date</label>
+        <input type="date" name="admissionDate" id="admissionDate" value="<%= cat.admissionDate.toISOString().split("T")[0] %>">
+    </div>
+    <div>
+        <label for="vaccinated">Vaccinated: </label>
+        <input type="checkbox" name="vaccinated" id="vaccinated" <%= cat.vaccinated? "checked" : "" %> >
+    </div>
+    <div>
+        <label for="neutered">Neutered: </label>
+        <input type="checkbox" name="neutered" id="neutered" <%= cat.neutered? "checked" : "" %>>
+    </div>
+    <div>
+        <label for="adopted">Adopted: </label>
+        <input type="checkbox" name="adopted" id="adopted" <%= cat.adopted? "checked" : "" %>>
+    </div>
+    <div>
+        <a href="/cats">Cancel</a>
+        <button type="submit">Edit</button>
+    </div>
+</form>
