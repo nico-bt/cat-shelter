@@ -48,12 +48,12 @@ router.get("/", async (req, res)=>{
     }
 })
 
-// New Cat Route (show form): /cats/new
+// New Cat Route
+// 1) Show form: /cats/new
 router.get("/new", (req, res)=>{
     res.render("cats/new")
 })
-
-// Create New Cat Route (add to db) -POST
+// 2) Add to database - POST
 router.post("/", (req, res)=>{
     upload(req, res, (err)=>{
         // Handle error from multer (max file size)
@@ -94,5 +94,34 @@ router.get("/:id", async (req,res)=>{
 	}
 })
 
+// Edit Route
+// 1) Show Form to update
+router.get("/:id/edit", async (req, res)=>{
+    const cat = await Cat.findById(req.params.id).exec();
+    res.render("cats/edit",{cat})
+})
+// 2) Update in database
+router.put("/:id", async (req, res)=>{
+    try {
+        const newCat = {
+            // image: (req.file? req.file.filename : "") , //req.file comes from 'multer' with the 'upload' midleware. "image" is the name of the input type=file in the form
+            name: req.body.name,
+            age: req.body.age,
+            admissionDate: req.body.admissionDate,
+            vaccinated: !!(req.body.vaccinated), // "!!" for make it boolean
+            neutered: !!(req.body.neutered),
+            adopted: !!(req.body.adopted)
+            }
+        const cat = await Cat.findByIdAndUpdate(req.params.id, newCat)
+        res.redirect(`/cats/${cat.id}`)
+    } catch (error) {
+        res.redirect("/cats")
+    }
+})
+
+// Delete
+router.delete("/:id", async (req, res)=>{
+    res.send("Delete route for id:" +req.params.id)
+})
 
 module.exports = router
