@@ -13,13 +13,34 @@
 <% cats.forEach((cat)=>{ %>
     <div>
         <ul>
-            <li><img width="200px" src="\uploads\<%=cat.image%>" alt="cat image"> </li>
-            <li><%= cat.name %> </li>
-            <li><%= cat.age %> </li>
-            <li><%- cat.vaccinated? "Vacunas completas" : "Falta completar esquema de vacunación" %> </li>
-            <li><%- cat.adopted? "Adoptado" : "En adopción" %> </li>
-            <li>Admission: <%= cat.admissionDate.toISOString().split("T")[0] %> </li>
-            <li><a href="/cats/<%=cat.id %>">LINK AL CAT ID</a></li>
+            <li>
+                <img width="200px" src="\uploads\<%=cat.image%>" alt="cat image">
+            </li>
+            <li>
+                <%= cat.name %>
+            </li>
+            <li>
+                <%= cat.age %>
+            </li>
+            <li>
+                <%- cat.vaccinated? "Vacunas completas" : "Falta completar esquema de vacunación" %> 
+            </li>
+            <li>
+                <%- cat.adopted? "Adoptado" : "En adopción" %> 
+            </li>
+            <li>
+                Admission: <%= cat.admissionDate.toISOString().split("T")[0] %> 
+            </li>
+            <li>
+                <a href="/cats/<%=cat.id%>">View Cat</a>
+            </li>
+            <li>
+                <a href="/cats/<%=cat.id%>/edit">Edit</a>
+            </li>
+
+            <form method="POST" action="/cats/<%=cat.id%>?_method=DELETE">
+                <button type="submit">Delete</button>
+            </form>
         </ul>
     </div>
 <% }) %> 
