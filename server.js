@@ -13,6 +13,10 @@ app.use(expressLayouts);
 app.set("layout", "layouts/layout")
 app.use(express.static("public"))
 
+// override with POST having ?_method=DELETE
+const methodOverride = require('method-override')
+app.use(methodOverride('_method'))
+
 // Enable access to body.xxxx
 app.use(express.json()); 
 app.use(express.urlencoded())
